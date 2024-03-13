@@ -1,0 +1,59 @@
+<div class="card-top container-fluid">
+
+    <div class="container d-flex">
+
+        <div class="item">
+            <a>
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="">
+                <h6>All Products</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a>
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100" alt="">
+                <h6>Electronics</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a>
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100" alt="">
+                <h6>Fashion</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a>
+                <img style="width:62px; margin-top:5px"
+                    src="https://rukminim1.flixcart.com/image/580/696/kkh6zrk0/jewellery-set/o/w/z/gt-ns-862-matushri-art-original-imafzt9teacakjyn.jpeg?q=50"
+                    alt="">
+                <h6>Jewllery</h6>
+            </a>
+        </div>
+
+        <mat-radio-group [(ngModel)]="radioValue" (change)="radioChange($event)" aria-label="Select sorting method">
+            <mat-radio-button *ngFor="let alphabet of alphabetArray" [value]="alphabet">{{alphabet}}</mat-radio-button>
+        </mat-radio-group>
+
+
+
+    </div>
+    <mat-form-field>
+        <mat-label>Choose an Option</mat-label>
+        <mat-select [(ngModel)]="selected" (selectionChange)="onChange($event)">
+
+            <mat-option *ngFor="let array of dummyArray" [value]="array.value">
+                {{array.label}}
+            </mat-option>
+
+        </mat-select>
+    </mat-form-field>
+
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let item of productList | searchFilter:searchText">
+            <app-card [item]="item" class="col-md-4" *ngIf="item?.id" (cartItem)="addtocart($event)"></app-card>
+        </ng-container>
+    </div>
+</div>

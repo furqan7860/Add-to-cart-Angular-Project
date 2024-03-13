@@ -1,0 +1,10 @@
+<img [src]="data.image" alt="">
+
+<h1 mat-dialog-title>Delete Record</h1>
+<div mat-dialog-content>
+  Would you like to delete record <strong>"{{data.record}}"</strong>?
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>{{data.cancelBtn}}</button>
+  <button mat-button (click)="onDelete()">{{data.deleteBtn}}</button>
+</div>
